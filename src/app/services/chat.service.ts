@@ -15,7 +15,7 @@ export interface Conversation {
 }
 
 // Leave empty for mock mode. Example: 'https://your-api.azurewebsites.net/api'
-const API_URL = 'http://localhost:5279/api';
+const API_URL = 'https://ranichatapi-eqh2gxatfmanh0e6.centralus-01.azurewebsites.net/api';
 const PASSCODE_KEY = 'household-passcode';
 const CONVERSATIONS_KEY = 'household-conversations';
 const ACTIVE_CONVERSATION_KEY = 'household-active-conversation';
