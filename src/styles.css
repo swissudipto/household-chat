@@ -1,0 +1,23 @@
+:root {
+  --ink: #17302e;
+  --teal: #1f4d4a;
+  --mist: #eaf0ef;
+  --paper: #ffffff;
+  --line: #d3dedc;
+  --muted: #5d7371;
+  --error: #b3261e;
+  --font: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", sans-serif;
+  box-sizing: border-box;
+}
+*, *::before, *::after { box-sizing: inherit; }
+html, body { height: 100%; margin: 0; }
+body {
+  font-family: var(--font);
+  font-size: 16px; /* 16px+ stops iOS zooming into inputs */
+  color: var(--ink);
+  background: var(--mist);
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior: none;
+}
+button, input { font: inherit; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }

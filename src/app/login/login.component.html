@@ -1,0 +1,16 @@
+<main>
+  <h1>Home Helper</h1>
+  <p>Enter the passcode to continue.</p>
+  <input
+    #code
+    type="password"
+    placeholder="Passcode"
+    autocomplete="current-password"
+    aria-label="Passcode"
+    (keydown.enter)="submit(code.value)"
+  />
+  @if (error()) {
+    <p class="error" role="alert">{{ error() }}</p>
+  }
+  <button type="button" [disabled]="busy()" (click)="submit(code.value)">Open chat</button>
+</main>
