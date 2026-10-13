@@ -1,4 +1,4 @@
-import { Component, ElementRef, effect, inject, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, effect, inject, signal, viewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { ChatService } from '../services/chat.service';
 
@@ -9,7 +9,7 @@ import { ChatService } from '../services/chat.service';
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css',
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit {
   chat = inject(ChatService);
   sidebarOpen = signal(false);
   private list = viewChild.required<ElementRef<HTMLElement>>('list');
@@ -23,6 +23,9 @@ export class ChatComponent {
         el.scrollTop = el.scrollHeight;
       });
     });
+  }
+  ngOnInit(): void {
+    //this.newChat();
   }
 
   send(box: HTMLInputElement) {

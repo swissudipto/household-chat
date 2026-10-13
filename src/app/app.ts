@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
   template: `
     @if (chat.isAuthed()) { <app-chat /> } @else { <app-login /> }
   `,
-  styles: `:host { display: block; height: 100%; }`,
+  styles: `:host { display: block; height: 100dvh; }`,
 })
 export class App {
   chat = inject(ChatService);

@@ -15,6 +15,8 @@
   width: min(100%, 1120px);
   height: 100%;
   margin: 0 auto;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
   background: #fffefa;
   box-shadow: 0 0 50px rgb(30 57 54 / 5%);
 }
@@ -65,7 +67,7 @@
   background: rgb(255 254 250 / 94%);
 }
 
-.brand-lockup { display: flex; align-items: center; gap: 12px; }
+.brand-lockup { display: flex; min-width: 0; align-items: center; gap: 12px; }
 .menu-button { display: none; width: 35px; height: 35px; place-items: center; border: 1px solid var(--chat-line); border-radius: 11px; background: #fff; color: var(--chat-teal); cursor: pointer; }
 .menu-button svg { width: 18px; height: 18px; }
 .brand-mark {
@@ -77,8 +79,9 @@
   background: #e6f0e9;
   color: var(--chat-teal);
 }
-.brand-mark svg { width: 27px; height: 27px; }
-.brand-copy h1 { margin: 0; color: var(--chat-ink); font-size: 1rem; font-weight: 750; letter-spacing: -.025em; }
+.brand-mark img { width: 42px; height: 42px; border-radius: 15px; }
+.brand-copy { min-width: 0; }
+.brand-copy h1 { overflow: hidden; margin: 0; color: var(--chat-ink); font-size: 1rem; font-weight: 750; letter-spacing: -.025em; text-overflow: ellipsis; white-space: nowrap; }
 .brand-copy p { display: flex; align-items: center; gap: 6px; margin: 3px 0 0; color: var(--chat-muted); font-size: .75rem; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #6eaa76; box-shadow: 0 0 0 3px #e7f2e7; }
 
@@ -118,13 +121,8 @@
   text-align: center;
   animation: arrive .45s ease both;
 }
-.welcome-art { position: relative; display: grid; width: 138px; height: 122px; margin: 0 auto 10px; place-items: center; }
-.welcome-art::before { position: absolute; inset: 14px 10px 0; border-radius: 48% 52% 46% 54%; background: #f3f2e7; content: ""; transform: rotate(-7deg); }
-.welcome-house { position: relative; display: grid; width: 100px; height: 96px; place-items: center; }
-.welcome-house svg { width: 88px; height: 82px; filter: drop-shadow(0 5px 0 rgb(31 77 74 / 7%)); }
-.spark { position: absolute; z-index: 1; color: #d99158; }
-.spark-one { top: 13px; right: 13px; font-size: 21px; }
-.spark-two { top: 38px; left: 9px; color: #7caa87; font-size: 19px; }
+.welcome-art { position: relative; display: grid; width: 142px; height: 142px; margin: 0 auto 10px; place-items: center; }
+.welcome-krishna { display: block; width: 100%; height: 100%; object-fit: contain; }
 .eyebrow { margin: 0 0 9px; color: #668b70; font-size: .7rem; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
 .welcome h2 { margin: 0; color: var(--chat-ink); font-size: clamp(1.8rem, 7vw, 2.35rem); font-weight: 750; letter-spacing: -.055em; line-height: 1.08; }
 .welcome-copy { max-width: 350px; margin: 12px auto 23px; color: var(--chat-muted); font-size: .91rem; line-height: 1.55; }
@@ -156,7 +154,7 @@
 
 .message-row { display: flex; align-items: flex-end; gap: 9px; animation: arrive .2s ease both; }
 .from-user { justify-content: flex-end; }
-.assistant-avatar { display: grid; width: 30px; height: 30px; flex: 0 0 auto; place-items: center; border-radius: 11px; background: #e6f0e9; color: var(--chat-teal); font-size: 19px; font-weight: 700; }
+.assistant-avatar { display: block; width: 30px; height: 30px; flex: 0 0 auto; border-radius: 11px; }
 .message-content { display: flex; max-width: min(82%, 500px); flex-direction: column; align-items: flex-start; gap: 5px; }
 .from-user .message-content { align-items: flex-end; }
 .message-label { padding: 0 4px; color: #87958e; font-size: .68rem; font-weight: 650; }
@@ -173,7 +171,7 @@
 .composer-area { flex: 0 0 auto; padding: 12px clamp(16px, 5vw, 42px) calc(11px + env(safe-area-inset-bottom)); border-top: 1px solid var(--chat-line); background: #fffefa; }
 .composer { display: flex; align-items: center; gap: 8px; padding: 6px; border: 1px solid #e1e8e0; border-radius: 18px; background: #fff; box-shadow: 0 4px 16px rgb(30 57 54 / 5%); transition: border-color .18s ease, box-shadow .18s ease; }
 .composer:focus-within { border-color: #9bbba2; box-shadow: 0 0 0 3px rgb(105 148 114 / 12%); }
-.composer input { width: 100%; min-width: 0; padding: 10px 12px; border: 0; outline: 0; background: transparent; color: var(--chat-ink); font-size: .91rem; }
+.composer input { width: 100%; min-width: 0; padding: 10px 12px; border: 0; outline: 0; background: transparent; color: var(--chat-ink); font-size: 16px; }
 .composer input::placeholder { color: #a1aaa4; }
 .send-button { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 15px; border: 0; border-radius: 13px; background: var(--chat-teal); color: #fff; font-size: .8rem; font-weight: 700; cursor: pointer; transition: background .18s ease, transform .18s ease; }
 .send-button:hover:not(:disabled) { transform: translateY(-1px); background: #194943; }
@@ -186,6 +184,7 @@
 @keyframes pulse { 0%, 60%, 100% { opacity: .45; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
 
 @media (max-width: 520px) {
+  :host { height: 100dvh; }
   .chat-shell { position: relative; overflow: hidden; }
   .sidebar { position: absolute; inset: 0 auto 0 0; width: min(82vw, 300px); padding-top: calc(20px + env(safe-area-inset-top)); box-shadow: 10px 0 30px rgb(20 45 40 / 12%); transform: translateX(-105%); transition: transform .22s ease; }
   .sidebar.sidebar-open { transform: translateX(0); }
@@ -195,7 +194,7 @@
   .topbar { padding-right: 16px; padding-left: 16px; }
   .message-list { padding: 20px 17px; }
   .welcome { padding-top: 0; }
-  .welcome-art { height: 105px; }
+  .welcome-art { width: 108px; height: 108px; }
   .prompt-grid { gap: 7px; }
   .prompt-card { gap: 7px; padding: 9px 8px; }
   .prompt-icon { width: 31px; height: 31px; }
@@ -206,9 +205,7 @@
 }
 
 @media (max-height: 700px) and (min-width: 521px) {
-  .welcome-art { height: 88px; }
-  .welcome-art::before { inset: 2px 10px 0; }
-  .welcome-house svg { width: 70px; }
+  .welcome-art { width: 92px; height: 92px; }
   .welcome-copy { margin-top: 8px; margin-bottom: 14px; }
   .message-list { padding-top: 16px; padding-bottom: 16px; }
 }

@@ -1,3 +1,5 @@
+:host { display: block; height: 100dvh; }
+
 main {
   height: 100%;
   display: flex;

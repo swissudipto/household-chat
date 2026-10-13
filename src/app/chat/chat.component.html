@@ -28,7 +28,7 @@
     </nav>
     <div class="sidebar-profile">
       <div class="profile-avatar">R</div>
-      <div><strong>Rani</strong><small>Personal assistant</small></div>
+      <div><strong>Rani</strong><small>Chatting with Madhav</small></div>
       <span class="profile-menu" aria-hidden="true">···</span>
     </div>
   </aside>
@@ -43,14 +43,10 @@
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
       </button>
       <div class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M5 15.1 16 6l11 9.1v10.2a1.7 1.7 0 0 1-1.7 1.7H6.7A1.7 1.7 0 0 1 5 25.3V15.1Z" fill="currentColor" opacity=".2"/>
-          <path d="M3.8 15.2 16 5l12.2 10.2M8.5 13.5v12.8h15V13.5M13 26.2v-7h6v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="m22.8 7.2 2.4-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <img src="madhav-feather.png" alt="" />
       </div>
       <div class="brand-copy">
-        <h1>{{ chat.currentConversation()?.title || 'Rani’s Assistant' }}</h1>
+        <h1>{{ chat.currentConversation()?.title || 'Madhav' }}</h1>
         <p><span class="status-dot"></span>Here to make your day easier</p>
       </div>
     </div>
@@ -64,23 +60,12 @@
     @if (chat.messages().length === 0) {
       <div class="welcome">
         <div class="welcome-art" aria-hidden="true">
-          <span class="spark spark-one">✦</span>
-          <span class="spark spark-two">✧</span>
-          <div class="welcome-house">
-            <svg viewBox="0 0 88 82" fill="none">
-              <path d="m12 38 32-26 32 26v34H12V38Z" fill="#F5C979"/>
-              <path d="m6 39 38-31 38 31" stroke="#1F4D4A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M35 72V48h18v24" fill="#F7F4EA" stroke="#1F4D4A" stroke-width="4" stroke-linejoin="round"/>
-              <path d="M18 43v26M70 43v26" stroke="#D99158" stroke-width="3" stroke-linecap="round"/>
-              <path d="M21 51h7m-7 7h7m32-7h7m-7 7h7" stroke="#1F4D4A" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M44 3v5M3 23l5 2m72-2-5 2" stroke="#D99158" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-          </div>
+          <img class="welcome-krishna" src="krishna-flute-feather.png" alt="" />
         </div>
         <p class="eyebrow">Your personal assistant</p>
-        <h2>Hi Rani,<br />what’s on your mind?</h2>
+        <h2>Hello, Rani.<br />I’m Madhav, here to help.</h2>
         <p class="welcome-copy">I’m here to help with everyday questions, make plans, or talk through something you’re figuring out.</p>
-        <div class="prompt-grid" aria-label="Suggestions for Rani">
+        <div class="prompt-grid" aria-label="Suggestions from Madhav">
           <button type="button" class="prompt-card" (click)="sendPrompt('Suggest a few enjoyable things to do in Kolkata this weekend')">
             <span class="prompt-icon dinner" aria-hidden="true">🌇</span>
             <span><strong>Explore Kolkata</strong><small>Ideas for your time off</small></span>
@@ -108,10 +93,10 @@
     @for (m of chat.messages(); track m.id) {
       <article class="message-row" [class.from-user]="m.sender === 'user'" [class.from-assistant]="m.sender === 'bot'">
         @if (m.sender === 'bot') {
-          <div class="assistant-avatar" aria-hidden="true">⌂</div>
+          <img class="assistant-avatar" src="madhav-feather.png" alt="" />
         }
         <div class="message-content">
-          <div class="message-label">{{ m.sender === 'user' ? 'You' : 'Your assistant' }}</div>
+          <div class="message-label">{{ m.sender === 'user' ? 'You' : 'Madhav' }}</div>
           <div class="bubble" [class.user-bubble]="m.sender === 'user'" [class.bot-bubble]="m.sender === 'bot'">
             {{ m.text }}
           </div>
@@ -121,9 +106,9 @@
     }
     @if (chat.sending()) {
       <article class="message-row from-assistant">
-        <div class="assistant-avatar" aria-hidden="true">⌂</div>
+        <img class="assistant-avatar" src="madhav-feather.png" alt="" />
         <div class="message-content">
-          <div class="message-label">Your assistant</div>
+          <div class="message-label">Madhav</div>
           <div class="bubble bot-bubble typing" aria-label="Your assistant is thinking">
             <span></span><span></span><span></span>
           </div>

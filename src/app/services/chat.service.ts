@@ -1,4 +1,4 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, computed, isDevMode, signal } from '@angular/core';
 
 export interface Message {
   id: number;
@@ -14,8 +14,9 @@ export interface Conversation {
   updatedAt: Date;
 }
 
-// Leave empty for mock mode. Example: 'https://your-api.azurewebsites.net/api'
-const API_URL = 'https://ranichatapi-eqh2gxatfmanh0e6.centralus-01.azurewebsites.net/api';
+const LOCAL_API_URL = 'http://localhost:5279/api';
+const HOSTED_API_URL = 'https://ranichatapi-eqh2gxatfmanh0e6.centralus-01.azurewebsites.net/api';
+const API_URL = isDevMode() ? LOCAL_API_URL : HOSTED_API_URL; 
 const PASSCODE_KEY = 'household-passcode';
 const CONVERSATIONS_KEY = 'household-conversations';
 const ACTIVE_CONVERSATION_KEY = 'household-active-conversation';

@@ -12,6 +12,7 @@
 *, *::before, *::after { box-sizing: inherit; }
 html, body { height: 100%; margin: 0; }
 body {
+  min-height: 100dvh;
   font-family: var(--font);
   font-size: 16px; /* 16px+ stops iOS zooming into inputs */
   color: var(--ink);
@@ -19,5 +20,6 @@ body {
   -webkit-text-size-adjust: 100%;
   overscroll-behavior: none;
 }
+app-root { display: block; min-height: 100dvh; }
 button, input { font: inherit; }
 :focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
