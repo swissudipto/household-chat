@@ -35,6 +35,12 @@ export class ChatComponent implements OnInit {
     this.chat.send(text);
   }
 
+  sendOnEnter(event: Event, box: HTMLInputElement) {
+    if ((event as KeyboardEvent).isComposing) return;
+    event.preventDefault();
+    this.send(box);
+  }
+
   sendPrompt(text: string) {
     if (this.chat.sending()) return;
     this.chat.send(text);
